@@ -1,0 +1,21 @@
+/*=====  IE 3  =====*/
+a { text-decoration: none; transition: color 200ms; }
+.icone { width: 170px; }
+.listemobile { width: 100%; }
+.listepc { width: 310px; }
+.interligne { line-height: 27px; }
+.devliste { margin: 0 0 10px 0; }
+/*=====COULEURS=====*/
+a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
+.soustitre,.contenu,.pref
+{
+	-webkit-box-shadow: 0 0 5px 3px #000000; -webkit-border-radius: 12px;
+	-moz-box-shadow: 0 0 5px 3px #000000; -moz-border-radius: 12px;
+	box-shadow: 0 0 5px 3px #000000; border-radius: 12px;
+}
+.popup,.iconecadre,.listecadre
+{
+	-webkit-box-shadow: 0 0 5px 3px #242424; -webkit-border-radius: 12px;
+	-moz-box-shadow: 0 0 5px 3px #242424; -moz-border-radius: 12px;
+	box-shadow: 0 0 5px 3px #242424; border-radius: 12px;
+}

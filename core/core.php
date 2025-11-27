@@ -18,8 +18,8 @@
 		$fr = ($_SERVER['REDIRECT_QUERY_STRING'] == "lang=fr") ? true : false;
 	$lang = ($fr) ? "fr" : "en";
 
-	// Create an $urn for root page/Création d'une $urn pour la page racine
-	if(!isset($urn)) $urn = ($fr) ? "Accueil" : "Home";
+	// Create an $url for root page/Création d'une $url pour la page racine
+	if(!isset($url)) $url = ($fr) ? "Accueil" : "Home";
 
 	// Call to/Appel à sql.php & syntax.php
 	require('sql.php');

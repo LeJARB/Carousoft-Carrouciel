@@ -17,7 +17,7 @@
 	
 	// PDO execute
 	try 
-	{ $PDOprep->execute([$urn]); }
+	{ $PDOprep->execute([$url]); }
 	catch(PDOException $e)
 	{ die("Error : " . $e->getMessage()); }
 

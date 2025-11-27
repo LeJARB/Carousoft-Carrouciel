@@ -3,8 +3,13 @@
 	// [EN] Enhanced syntax based-on Wikipedia's
 	// [FR] Syntaxe avancée basée sur celle de Wikipédia
 
+	// Final var/Variable finale
 	$markup = "";
-	$content = $results[5];
+
+	// Keep only the content of the page/Garder seulement le contenu de la page
+	$content = $results['content'];
+
+	// Split the content for being read line by line/Séparer le contenu pour une lecture ligne par ligne
 	$lines = preg_split("/((\r?\n)|(\n?\r))/", $content);
 	foreach($lines as $line)
 	{
@@ -33,6 +38,8 @@
 		$prevline = $line;
 		$markup .= $line."\r\n";
 	}
+
+	// Show the formatted content/Afficher le contenu mis en forme
 	echo substr($markup,0,-2);
 
 ?>

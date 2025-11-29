@@ -2,6 +2,10 @@
 
 	// [EN] Enhanced syntax based-on Wikipedia's
 	// [FR] Syntaxe avancée basée sur celle de Wikipédia
+	
+	// File Protection by 403 Forbidden
+	if($_SERVER['SCRIPT_NAME'] == "/syntax.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
+
 
 	// Final var/Variable finale
 	$markup = "";

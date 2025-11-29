@@ -3,6 +3,9 @@
 	// [EN] SQL Relay. This profile, sjarkgxb_all, has only 'SELECT' permission
 	// [FR] Relais SQL. Le profil sjarkgxb_all n'a que 'SELECT' comme permission
 
+	// File Protection by 403 Forbidden
+	if($_SERVER['SCRIPT_NAME'] == "/sql.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
+
 	// Trying to access the database/Tentative d'accès à la base de données
 	try
 	{
@@ -25,7 +28,7 @@
 	$fetch = $PDOprep->fetchAll();
 
 	// Error 404 if the fetch returns null/Erreur 404 si la requête retourne un résultat null
-	if(!isset($fetch[0])) {header($_SERVER['SERVER_PROTOCOL']." 404"); exit("404 Not Found");}
+	if(!isset($fetch[0])) { header($_SERVER['SERVER_PROTOCOL']." 404"); exit("404 Not Found"); }
 
 	// Save result/Sauvegarder le résultat
 	$results = $fetch[0];

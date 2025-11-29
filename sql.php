@@ -16,11 +16,11 @@
 	{ die("Error : " . $e->getMessage()); }
 
 	// PDO prepare
-	$PDOprep = $connect->prepare("SELECT * FROM `pages` WHERE name = BINARY ?"); 
+	$PDOprep = $connect->prepare("SELECT * FROM `pages` WHERE name = BINARY ? AND lang = ?"); 
 	
 	// PDO execute
 	try 
-	{ $PDOprep->execute([$url]); }
+	{ $PDOprep->execute([$url,$lang]); }
 	catch(PDOException $e)
 	{ die("Error : " . $e->getMessage()); }
 

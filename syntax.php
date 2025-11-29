@@ -18,11 +18,10 @@
 	foreach($lines as $line)
 	{
 		// Titles/Titres
-		if(str_contains($line,"="))
+		if(str_contains($line,"=="))
 		{
 			switch(substr_count($line,"=")/2)
 			{
-				case 1: $line = str_replace(["= "," ="],["<h1>","</h1>"],$line); break;
 				case 2: $line = str_replace(["== "," =="],["<h2>","</h2>"],$line); break;
 				case 3: $line = str_replace(["=== "," ==="],["<h3>","</h3>"],$line); break;
 				case 4: $line = str_replace(["==== "," ===="],["<h4>","</h4>"],$line); break;
@@ -36,6 +35,26 @@
 		{
 			$markup = substr($markup,0,-strlen($prevline)-2);
 			$line = "<p>".$prevline."</p>";
+		}
+
+		// Correct <br> for XHTML 1.0 Transitionnal
+		if(str_contains($line,"<br>")) { $line = str_replace("<br>","<br/>",$line); }
+
+		// Font formatting/Mise en forme de la police
+		if(str_contains($line,"{{"))
+		{
+			preg_match_all("/{{(.*?)\|(.*?)}}/s",$line,$matches);
+			foreach($matches[1] as $clé => $valeur)
+			{
+				$matches[3][$clé] = $matches[2][$clé];
+				if(str_contains($valeur,"B")) $matches[3][$clé] = "<b>".$matches[3][$clé]."</b>";
+				if(str_contains($valeur,"I")) $matches[3][$clé] = "<i>".$matches[3][$clé]."</i>";
+				if(str_contains($valeur,"U")) $matches[3][$clé] = "<u>".$matches[3][$clé]."</u>";
+				if(str_contains($valeur,"S")) $matches[3][$clé] = "<s>".$matches[3][$clé]."</s>";
+				if(str_contains($valeur,"E")) $matches[3][$clé] = "<sup>".$matches[3][$clé]."</sup>";
+				if(str_contains($valeur,"X")) $matches[3][$clé] = "<sub>".$matches[3][$clé]."</sub>";
+			}
+			$line = str_replace($matches[0],$matches[3],$line);
 		}
 
 		// Increment.ation

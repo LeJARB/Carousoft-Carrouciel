@@ -16,7 +16,7 @@
 	{ die("Error : " . $e->getMessage()); }
 
 	// PDO prepare
-	$PDOprep = $connect->prepare("SELECT * FROM `pages` WHERE name = ?"); 
+	$PDOprep = $connect->prepare("SELECT * FROM `pages` WHERE name = BINARY ?"); 
 	
 	// PDO execute
 	try 

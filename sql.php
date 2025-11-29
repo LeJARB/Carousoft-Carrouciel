@@ -1,16 +1,17 @@
 <?php
 
-	// [EN] SQL Relay. This profile, sjarkgxb_all, has only 'SELECT' permission
-	// [FR] Relais SQL. Le profil sjarkgxb_all n'a que 'SELECT' comme permission
-
+	// [EN] SQL Relay.
+	// [FR] Relais SQL.
+	
 	// File Protection by 403 Forbidden
 	if($_SERVER['SCRIPT_NAME'] == "/sql.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
 	// Trying to access the database/Tentative d'accès à la base de données
+	// Hidden when pushed to Github/Masqué quand poussé sur 
 	try
 	{
-		$db = "mysql:host="."localhost".";dbname="."sjarkgxb_jarb".";port="."3306".";charset=utf8";
-		$connect = new PDO($db, "sjarkgxb_all", "zaR]CqZ50MAVp5p7");
+		
+
 	}
 	catch(PDOException $e)
 	{ die("Error : " . $e->getMessage()); }

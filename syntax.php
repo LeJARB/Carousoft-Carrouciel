@@ -20,15 +20,9 @@
 		// Titles/Titres
 		if(str_contains($line,"=="))
 		{
-			switch(substr_count($line,"=")/2)
-			{
-				case 2: $line = str_replace(["== "," =="],["<h1>","</h1>"],$line); break;
-				case 3: $line = str_replace(["=== "," ==="],["<h2>","</h2>"],$line); break;
-				case 4: $line = str_replace(["==== "," ===="],["<h3>","</h3>"],$line); break;
-				case 5: $line = str_replace(["===== "," ====="],["<h4>","</h4>"],$line); break;
-				case 6: $line = str_replace(["====== "," ======"],["<h5>","</h5>"],$line); break;
-				case 7: $line = str_replace(["======= "," ======="],["<h6>","</h6>"],$line); break;
-			}
+			preg_match("/==(.*?)\|(.*?)==/s",$line,$matches);
+			$size = $matches[1];
+			$line = "<h$size>".$matches[2]."</h$size>";
 		}
 
 		// Paragraph.e
@@ -42,18 +36,37 @@
 		if(str_contains($line,"<br>")) { $line = str_replace("<br>","<br/>",$line); }
 
 		// Font formatting/Mise en forme de la police
-		if(str_contains($line,"{{"))
+		if(str_contains($line,"''"))
 		{
-			preg_match_all("/{{(.*?)\|(.*?)}}/s",$line,$matches);
-			foreach($matches[1] as $clé => $valeur)
+			preg_match_all("/''(.*?)\|(.*?)''/s",$line,$matches); 
+			foreach($matches[1] as $index => $value)
 			{
-				$matches[3][$clé] = $matches[2][$clé];
-				if(str_contains($valeur,"B")) $matches[3][$clé] = "<b>".$matches[3][$clé]."</b>";
-				if(str_contains($valeur,"I")) $matches[3][$clé] = "<i>".$matches[3][$clé]."</i>";
-				if(str_contains($valeur,"U")) $matches[3][$clé] = "<u>".$matches[3][$clé]."</u>";
-				if(str_contains($valeur,"S")) $matches[3][$clé] = "<s>".$matches[3][$clé]."</s>";
-				if(str_contains($valeur,"E")) $matches[3][$clé] = "<sup>".$matches[3][$clé]."</sup>";
-				if(str_contains($valeur,"X")) $matches[3][$clé] = "<sub>".$matches[3][$clé]."</sub>";
+				$matches[3][$index] = $matches[2][$index];
+				foreach(str_split($value) as $char)
+				{
+					switch($char)
+					{
+						case "B": $matches[3][$index] = "<b>".$matches[3][$index]."</b>"; break;
+						case "I": $matches[3][$index] = "<i>".$matches[3][$index]."</i>"; break;
+						case "U": $matches[3][$index] = "<u>".$matches[3][$index]."</u>"; break;
+						case "S": $matches[3][$index] = "<s>".$matches[3][$index]."</s>"; break;
+						case "E": $matches[3][$index] = "<sup>".$matches[3][$index]."</sup>"; break;
+						case "X": $matches[3][$index] = "<sub>".$matches[3][$index]."</sub>"; break;
+						default : $matches[3][$index] = "<font color=\"red\">&apos;".substr($matches[0][$index],1,-1)."&apos;</font>";
+					}
+				}
+			}
+			$line = str_replace($matches[0],$matches[3],$line);
+		}
+
+		// Hyperlinks/Hyperliens
+		if(str_contains($line,"[["))
+		{
+			preg_match_all("/\[\[(.*?)\|(.*?)\]\]/s",$line,$matches);
+			foreach($matches[1] as $index => $value)
+			{
+				$matches[3][$index] = "<a href=\"http$https://$host/$lang/$value\">".$matches[2][$index]."</a>";
+				if(str_contains($value,"://")) $matches[3][$index] = "<a href=\"$value\">".$matches[2][$index]."</a>";
 			}
 			$line = str_replace($matches[0],$matches[3],$line);
 		}

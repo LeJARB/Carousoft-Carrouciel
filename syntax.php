@@ -22,11 +22,12 @@
 		{
 			switch(substr_count($line,"=")/2)
 			{
-				case 2: $line = str_replace(["== "," =="],["<h2>","</h2>"],$line); break;
-				case 3: $line = str_replace(["=== "," ==="],["<h3>","</h3>"],$line); break;
-				case 4: $line = str_replace(["==== "," ===="],["<h4>","</h4>"],$line); break;
-				case 5: $line = str_replace(["===== "," ====="],["<h5>","</h5>"],$line); break;
-				case 6: $line = str_replace(["====== "," ======"],["<h6>","</h6>"],$line); break;
+				case 2: $line = str_replace(["== "," =="],["<h1>","</h1>"],$line); break;
+				case 3: $line = str_replace(["=== "," ==="],["<h2>","</h2>"],$line); break;
+				case 4: $line = str_replace(["==== "," ===="],["<h3>","</h3>"],$line); break;
+				case 5: $line = str_replace(["===== "," ====="],["<h4>","</h4>"],$line); break;
+				case 6: $line = str_replace(["====== "," ======"],["<h5>","</h5>"],$line); break;
+				case 7: $line = str_replace(["======= "," ======="],["<h6>","</h6>"],$line); break;
 			}
 		}
 

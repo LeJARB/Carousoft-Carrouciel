@@ -1,19 +1,13 @@
 <?php
 
-	// [EN] SQL Relay.
-	// [FR] Relais SQL.
+	// [EN] SQL Relay for page content.
+	// [FR] Relais SQL pour le contenu de page.
 
 	// File Protection by 403 Forbidden
-	if($_SERVER['SCRIPT_NAME'] == "/sql.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
+	if($_SERVER['SCRIPT_NAME'] == "/page.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
 	// Trying to access the database/Tentative d'accès à la base de données
-	// Hidden when pushed to Github/Masqué quand poussé sur 
-	try
-	{
-
-	}
-	catch(PDOException $e)
-	{ die("Error : " . $e->getMessage()); }
+	require('connect.php');
 
 	// PDO prepare
 	$PDOprep = $connect->prepare("SELECT * FROM `pages` WHERE name = BINARY ? AND lang = ?"); 

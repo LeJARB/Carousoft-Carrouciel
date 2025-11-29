@@ -47,7 +47,7 @@
 
 
 	// Call to/Appel à sql.php & syntax.php
-	require('sql.php');
+	require('page.php');
 	require('syntax.php');
 
 ?>

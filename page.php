@@ -2,7 +2,7 @@
 
 	// [EN] SQL Relay.
 	// [FR] Relais SQL.
-	
+
 	// File Protection by 403 Forbidden
 	if($_SERVER['SCRIPT_NAME'] == "/sql.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
@@ -10,7 +10,6 @@
 	// Hidden when pushed to Github/Masqué quand poussé sur 
 	try
 	{
-		
 
 	}
 	catch(PDOException $e)
@@ -32,6 +31,6 @@
 	if(!isset($fetch[0])) { header($_SERVER['SERVER_PROTOCOL']." 404"); exit("404 Not Found"); }
 
 	// Save result/Sauvegarder le résultat
-	$results = $fetch[0];
+	$page = $fetch[0];
 
 ?>

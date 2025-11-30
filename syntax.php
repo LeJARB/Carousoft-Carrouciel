@@ -31,14 +31,14 @@
 				}
 
 				// Paragraph.e
-				if(isset($prevline) && empty($line))
+				if(isset($prevline) && !empty($prevline) && empty($line))
 				{
 					$markup = substr($markup,0,-strlen($prevline)-2);
 					$line = "<p>".$prevline."</p>";
 				}
 
 				// Line break
-				if(str_contains($line,"<>")) { $line = str_replace("<>","<br/>",$line); }
+				if(str_contains($line,">>")) { $line = str_replace(">>","<br />",$line); }
 
 				// Font formatting/Mise en forme de la police
 				if(str_contains($line,"''"))
@@ -57,7 +57,7 @@
 								case "S": $matches[3][$index] = "<s>".$matches[3][$index]."</s>"; break;
 								case "E": $matches[3][$index] = "<sup>".$matches[3][$index]."</sup>"; break;
 								case "X": $matches[3][$index] = "<sub>".$matches[3][$index]."</sub>"; break;
-								default : $matches[3][$index] = "<font color=\"red\">&apos;".substr($matches[0][$index],1,-1)."&apos;</font>";
+								default : $matches[3][$index] = "<font color=\"red\">&#039;".substr($matches[0][$index],1,-1)."&#039;</font>";
 							}
 						}
 					}
@@ -74,6 +74,17 @@
 						if(str_contains($value,"://")) $matches[3][$index] = "<a href=\"$value\">".$matches[2][$index]."</a>";
 					}
 					$line = str_replace($matches[0],$matches[3],$line);
+				}
+
+				// Images
+				if(str_contains($line,"::"))
+				{
+					preg_match_all("/::(.*?)\|(.*?)\|(.*?)\|(.*?)::/s",$line,$matches);
+					// Name, Width, Height, Alt
+					foreach($matches[1] as $index => $value)
+					{
+						$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/images/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
+					}
 				}
 
 				// Increment.ation

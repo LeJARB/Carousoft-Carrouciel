@@ -6,7 +6,6 @@
 	// File Protection by 403 Forbidden
 	if($_SERVER['SCRIPT_NAME'] == "/syntax.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
-
 	// Final var/Variable finale
 	$markup = "";
 
@@ -95,6 +94,39 @@
 	}
 
 	// Show the formatted content/Afficher le contenu mis en forme
-	echo substr($markup,0,-2);
+	echo accents(substr($markup,0,-2));
+
+	// [EN] Convert accented characters to HTML entities
+	// [FR] Conversion des caractères accentués en entités HTML
+	function accents(string $s) : string
+	{
+		$accents = array(
+			"À","Â","Ä","Ç",
+			"È","É","Ê","Ë",
+			"Ì","Î","Ý","Ò",
+			"Ô","Ö","Œ","Ù",
+			"Û","Ü","à","â",
+			"ä","ç","è","é",
+			"ê","ë","ì","î",
+			"ï","ò","ô","ö",
+			"œ","ù","û","ü"
+		);
+
+		$entites = array(
+			"&#192;","&#194;","&#196;","&#199;",
+			"&#200;","&#201;","&#202;","&#203;",
+			"&#204;","&#206;","&#207;","&#210;",
+			"&#212;","&#214;","&#338;","&#217;",
+			"&#219;","&#220;","&#224;","&#226;",
+			"&#228;","&#231;","&#232;","&#233;",
+			"&#234;","&#235;","&#236;","&#238;",
+			"&#239;","&#242;","&#244;","&#246;",
+			"&#339;","&#249;","&#251;","&#252;"
+		);
+		
+		$s = str_replace($accents,$entites,$s);
+		
+		return $s;
+	}
 
 ?>

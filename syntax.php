@@ -19,7 +19,7 @@
 		{
 			// Split the content for being read line by line/Séparer le contenu pour une lecture ligne par ligne
 			$lines = preg_split("/((\r?\n)|(\n?\r))/", $content);
-			foreach($lines as $line)
+			foreach($lines as $linenum => $line)
 			{
 				// Titles/Titres
 				if(str_contains($line,"=="))
@@ -86,6 +86,29 @@
 					}
 				}
 
+				// List.e
+				if(str_contains($line,"**"))
+				{
+					if(isset($list))
+					{
+						if(!empty(substr($line,3)))
+						{
+							$list .= "\r\n".str_replace(["** ","**"],"<li>",$line)."</li>";
+							continue;
+						}
+						else
+						{
+							$line = $list."\r\n</ul>";
+							unset($list);
+						}
+					}
+					else
+					{
+						$list = "<ul>\r\n".str_replace("** ","<li>",$line)."</li>";
+						continue;
+					}
+				}
+
 				// Increment.ation
 				$prevline = $line;
 				$markup .= $line."\r\n";
@@ -112,7 +135,22 @@
 			"œ","ù","û","ü"
 		);
 
-		$entites = array(
+		if(false) // For accents-incapable browsers/Pour les navigateurs ne supportants pas les accents
+		{
+			$entities = array(
+				"A","A","A","C",
+				"E","E","E","E",
+				"I","I","Y","O",
+				"O","O","OE","U",
+				"U","U","a","a",
+				"a","c","e","e",
+				"e","e","i","i",
+				"i","o","o","o",
+				"oe","u","u","u"
+			);
+		}
+
+		$entities = array(
 			"&#192;","&#194;","&#196;","&#199;",
 			"&#200;","&#201;","&#202;","&#203;",
 			"&#204;","&#206;","&#207;","&#210;",
@@ -124,7 +162,7 @@
 			"&#339;","&#249;","&#251;","&#252;"
 		);
 		
-		$s = str_replace($accents,$entites,$s);
+		$s = str_replace($accents,$entities,$s);
 		
 		return $s;
 	}

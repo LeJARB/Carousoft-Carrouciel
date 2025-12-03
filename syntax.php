@@ -37,7 +37,12 @@
 				}
 
 				// Line break
-				if(str_contains($line,">>")) { $line = str_replace(">>","<br />",$line); }
+				if(str_contains($line,">>")) 
+				{ 
+					if($line != ">>")
+					{ $line = str_replace(">>","<br />",$line); }
+					else continue;
+				}
 
 				// Font formatting/Mise en forme de la police
 				if(str_contains($line,"''"))
@@ -104,7 +109,45 @@
 					}
 					else
 					{
-						$list = "<ul>\r\n".str_replace("** ","<li>",$line)."</li>";
+						$list = "<ul>\r\n".str_replace(["** ","**"],"<li>",$line)."</li>";
+						continue;
+					}
+				}
+
+				// Thumbnails/Vignettes
+				if(str_contains($line,"##"))
+				{
+					$matches = explode("|",str_replace(["## ","##"],"",$line));
+					if(isset($thumbnails))
+					{
+						if(!empty(substr($line,3)))
+						{
+							if(count($matches) == 1)
+							{
+								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
+							}
+							else
+							{
+								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+							}
+							continue;
+						}
+						else
+						{
+							$line = $thumbnails."\r\n</center>";
+							unset($thumbnails);
+						}
+					}
+					else
+					{
+						if(count($matches) == 1)
+						{
+							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
+						}
+						else
+						{
+							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+						}
 						continue;
 					}
 				}
@@ -135,6 +178,18 @@
 			"œ","ù","û","ü"
 		);
 
+		$entities = array(
+			"&#192;","&#194;","&#196;","&#199;",
+			"&#200;","&#201;","&#202;","&#203;",
+			"&#204;","&#206;","&#207;","&#210;",
+			"&#212;","&#214;","&#338;","&#217;",
+			"&#219;","&#220;","&#224;","&#226;",
+			"&#228;","&#231;","&#232;","&#233;",
+			"&#234;","&#235;","&#236;","&#238;",
+			"&#239;","&#242;","&#244;","&#246;",
+			"&#339;","&#249;","&#251;","&#252;"
+		);
+
 		if(false) // For accents-incapable browsers/Pour les navigateurs ne supportants pas les accents
 		{
 			$entities = array(
@@ -149,18 +204,6 @@
 				"oe","u","u","u"
 			);
 		}
-
-		$entities = array(
-			"&#192;","&#194;","&#196;","&#199;",
-			"&#200;","&#201;","&#202;","&#203;",
-			"&#204;","&#206;","&#207;","&#210;",
-			"&#212;","&#214;","&#338;","&#217;",
-			"&#219;","&#220;","&#224;","&#226;",
-			"&#228;","&#231;","&#232;","&#233;",
-			"&#234;","&#235;","&#236;","&#238;",
-			"&#239;","&#242;","&#244;","&#246;",
-			"&#339;","&#249;","&#251;","&#252;"
-		);
 		
 		$s = str_replace($accents,$entities,$s);
 		

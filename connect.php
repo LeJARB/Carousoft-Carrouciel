@@ -7,12 +7,9 @@
 	if($_SERVER['SCRIPT_NAME'] == "/connect.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
 	// Trying to access the database/Tentative d'accès à la base de données
-	// Hidden when pushed to Github/Masqué quand poussé sur 
+	require("define.php"); // Hidden file/Fichier caché
 	try
-	{
-
-
-	}
+	{ $connect = new PDO(ADDRSQL, IDSQL, MDPSQL); }
 	catch(PDOException $e)
 	{ die("Error : " . $e->getMessage()); }
 

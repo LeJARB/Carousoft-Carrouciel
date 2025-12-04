@@ -142,11 +142,49 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
+							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
 						}
 						else
 						{
-							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+						}
+						continue;
+					}
+				}
+
+				// Infobox
+				if(str_contains($line,"}}"))
+				{
+					$matches = explode("|",str_replace(["}} ","}}"],"",$line)); print_r(empty($matches[0]));
+					if(isset($infobox))
+					{
+						if(!empty(substr($line,3)))
+						{
+							if(count($matches) > 1)
+							{
+								$infobox = substr($infobox,0,-14)."<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+							}
+							else
+							{
+								$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\">".$matches[0]."</td></tr>\r\n</table></div>";
+							}
+							continue;
+						}
+						else
+						{
+							$line = $infobox."\r\n</center>";
+							unset($infobox);
+						}
+					}
+					else
+					{
+						if(count($matches) > 1) 
+						{
+							$infobox = "<center>\r\n<div style=\"float:right !important;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+						}
+						else
+						{
+							$infobox = "<center>\r\n<div style=\"float:right !important;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\">".$matches[0]."</td></tr>\r\n</table></div>";
 						}
 						continue;
 					}

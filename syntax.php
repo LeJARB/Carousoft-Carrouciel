@@ -124,7 +124,7 @@
 						{
 							if(count($matches) == 1)
 							{
-								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
+								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".$matches[0]."</td></tr>\r\n</table></div>";
 							}
 							else
 							{
@@ -142,7 +142,7 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".str_replace(["## ","##"],"",$line)."</td></tr>\r\n</table></div>";
+							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".$matches[0]."</td></tr>\r\n</table></div>";
 						}
 						else
 						{

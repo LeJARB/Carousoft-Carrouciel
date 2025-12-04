@@ -155,7 +155,7 @@
 				// Infobox
 				if(str_contains($line,"}}"))
 				{
-					$matches = explode("|",str_replace(["}} ","}}"],"",$line)); print_r(empty($matches[0]));
+					$matches = explode("|",str_replace(["}} ","}}"],"",$line));
 					if(isset($infobox))
 					{
 						if(!empty(substr($line,3)))

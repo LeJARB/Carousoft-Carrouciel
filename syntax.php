@@ -1,7 +1,7 @@
 <?php
 
-	// [EN] Enhanced syntax based-on Wikipedia's
-	// [FR] Syntaxe avancée basée sur celle de Wikipédia
+	// [EN] Enhanced syntax based-on Wikipedia's and BBCode's
+	// [FR] Syntaxe avancée basée sur celles de Wikipédia et des BBCode
 	
 	// File Protection by 403 Forbidden
 	if($_SERVER['SCRIPT_NAME'] == "/syntax.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
@@ -10,195 +10,189 @@
 	$markup = "";
 
 	// Keep only useful content of the page/Garder seulement le contenu utile de la page
-	unset($page['lang'],$page['name'],$page[2],$page['title'],$page['subtitle'],$page['description'],$page['content']);
+	$header = array($page['title'],$page['subtitle']); if(isset($page['description'])) { array_push($header,$page['description']); }
+	$body = $page['content'];
 
-	// $content = $page[5];
-	foreach($page as $content)
-	{	
-		if(!is_null($content))
+	if(!is_null($body))
+	{
+		// Split the content for being read line by line/Séparer le contenu pour une lecture ligne par ligne
+		$lines = preg_split("/((\r?\n)|(\n?\r))/", $body);
+		foreach($lines as $line)
 		{
-			// Split the content for being read line by line/Séparer le contenu pour une lecture ligne par ligne
-			$lines = preg_split("/((\r?\n)|(\n?\r))/", $content);
-			foreach($lines as $linenum => $line)
+			// Titles/Titres
+			if(str_contains($line,"=="))
 			{
-				// Titles/Titres
-				if(str_contains($line,"=="))
-				{
-					preg_match("/==(.*?)\|(.*?)==/s",$line,$matches);
-					$size = $matches[1];
-					$line = "<h$size>".$matches[2]."</h$size>";
-				}
+				preg_match("/==(.*?)\|(.*?)==/s",$line,$matches);
+				$size = $matches[1];
+				$line = "<h$size>".$matches[2]."</h$size>";
+			}
 
-				// Paragraph.e
-				if(isset($prevline) && !empty($prevline) && empty($line))
-				{
-					$markup = substr($markup,0,-strlen($prevline)-2);
-					$line = "<p>".$prevline."</p>";
-				}
+			// Paragraph.e
+			if(isset($prevline) && !empty($prevline) && empty($line))
+			{
+				$markup = substr($markup,0,-strlen($prevline)-2);
+				$line = "<div align=\"justify\"><font face=\"Arial,Helvetica,sans-serif\" class=\"lineheight\" size=\"4\">".$prevline."</font></div><br />";
+			}
 
-				// Line break
-				if(str_contains($line,">>")) 
-				{ 
-					if($line != ">>")
-					{ $line = str_replace(">>","<br />",$line); }
-					else continue;
-				}
+			// Line break
+			if(str_contains($line,">>")) 
+			{ 
+				if($line != ">>")
+				{ $line = str_replace(">>","<br />",$line); }
+				else continue;
+			}
 
-				// Font formatting/Mise en forme de la police
-				if(str_contains($line,"''"))
+			// Font formatting/Mise en forme de la police
+			if(str_contains($line,"''"))
+			{
+				preg_match_all("/''(.*?)\|(.*?)''/s",$line,$matches); 
+				foreach($matches[1] as $index => $value)
 				{
-					preg_match_all("/''(.*?)\|(.*?)''/s",$line,$matches); 
-					foreach($matches[1] as $index => $value)
+					$matches[3][$index] = $matches[2][$index];
+					foreach(str_split($value) as $char)
 					{
-						$matches[3][$index] = $matches[2][$index];
-						foreach(str_split($value) as $char)
+						switch($char)
 						{
-							switch($char)
-							{
-								case "B": $matches[3][$index] = "<b>".$matches[3][$index]."</b>"; break;
-								case "I": $matches[3][$index] = "<i>".$matches[3][$index]."</i>"; break;
-								case "U": $matches[3][$index] = "<u>".$matches[3][$index]."</u>"; break;
-								case "S": $matches[3][$index] = "<s>".$matches[3][$index]."</s>"; break;
-								case "E": $matches[3][$index] = "<sup>".$matches[3][$index]."</sup>"; break;
-								case "X": $matches[3][$index] = "<sub>".$matches[3][$index]."</sub>"; break;
-								default : $matches[3][$index] = "<font color=\"red\">&#039;".substr($matches[0][$index],1,-1)."&#039;</font>";
-							}
+							case "B": $matches[3][$index] = "<b>".$matches[3][$index]."</b>"; break;
+							case "I": $matches[3][$index] = "<i>".$matches[3][$index]."</i>"; break;
+							case "U": $matches[3][$index] = "<u>".$matches[3][$index]."</u>"; break;
+							case "S": $matches[3][$index] = "<s>".$matches[3][$index]."</s>"; break;
+							case "E": $matches[3][$index] = "<sup>".$matches[3][$index]."</sup>"; break;
+							case "X": $matches[3][$index] = "<sub>".$matches[3][$index]."</sub>"; break;
+							default : $matches[3][$index] = "<font color=\"red\">&#039;".substr($matches[0][$index],1,-1)."&#039;</font>";
 						}
 					}
-					$line = str_replace($matches[0],$matches[3],$line);
 				}
+				$line = str_replace($matches[0],$matches[3],$line);
+			}
 
-				// Hyperlinks/Hyperliens
-				if(str_contains($line,"[["))
+			// Hyperlinks/Hyperliens
+			if(str_contains($line,"[["))
+			{
+				preg_match_all("/\[\[(.*?)\|(.*?)\]\]/s",$line,$matches);
+				foreach($matches[1] as $index => $value)
 				{
-					preg_match_all("/\[\[(.*?)\|(.*?)\]\]/s",$line,$matches);
-					foreach($matches[1] as $index => $value)
-					{
-						$matches[3][$index] = "<a href=\"http$https://$host/$lang/$value\">".$matches[2][$index]."</a>";
-						if(str_contains($value,"://")) $matches[3][$index] = "<a href=\"$value\">".$matches[2][$index]."</a>";
-					}
-					$line = str_replace($matches[0],$matches[3],$line);
+					$matches[3][$index] = "<a href=\"http$https://$host/$lang/$value\">".$matches[2][$index]."</a>";
+					if(str_contains($value,"://")) $matches[3][$index] = "<a href=\"$value\">".$matches[2][$index]."</a>";
 				}
+				$line = str_replace($matches[0],$matches[3],$line);
+			}
 
-				// Images
-				if(str_contains($line,"::"))
+			// Images
+			if(str_contains($line,"::"))
+			{
+				preg_match_all("/::(.*?)\|(.*?)\|(.*?)\|(.*?)::/s",$line,$matches);
+				// Name, Width, Height, Alt
+				foreach($matches[1] as $index => $value)
 				{
-					preg_match_all("/::(.*?)\|(.*?)\|(.*?)\|(.*?)::/s",$line,$matches);
-					// Name, Width, Height, Alt
-					foreach($matches[1] as $index => $value)
-					{
-						$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/images/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
-					}
+					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
 				}
+			}
 
-				// List.e
-				if(str_contains($line,"**"))
+			// List.e
+			if(str_contains($line,"**"))
+			{
+				if(isset($list))
 				{
-					if(isset($list))
+					if(!empty(substr($line,3)))
 					{
-						if(!empty(substr($line,3)))
-						{
-							$list .= "\r\n".str_replace(["** ","**"],"<li>",$line)."</li>";
-							continue;
-						}
-						else
-						{
-							$line = $list."\r\n</ul>";
-							unset($list);
-						}
-					}
-					else
-					{
-						$list = "<ul>\r\n".str_replace(["** ","**"],"<li>",$line)."</li>";
+						$list .= "\r\n".str_replace(["** ","**"],"<li><p class=\"list\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">",$line)."</font></p></li>";
 						continue;
 					}
-				}
-
-				// Thumbnails/Vignettes
-				if(str_contains($line,"##"))
-				{
-					$matches = explode("|",str_replace(["## ","##"],"",$line));
-					if(isset($thumbnails))
-					{
-						if(!empty(substr($line,3)))
-						{
-							if(count($matches) == 1)
-							{
-								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".$matches[0]."</td></tr>\r\n</table></div>";
-							}
-							else
-							{
-								$thumbnails .= "\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
-							}
-							continue;
-						}
-						else
-						{
-							$line = $thumbnails."\r\n</center>";
-							unset($thumbnails);
-						}
-					}
 					else
+					{
+						$line = $list."\r\n</ul>";
+						unset($list);
+					}
+				}
+				else
+				{
+					$list = "<ul>\r\n".str_replace(["** ","**"],"<li><p class=\"list\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">",$line)."</font></p></li>";
+					continue;
+				}
+			}
+
+			// Thumbnails/Vignettes
+			if(str_contains($line,"##"))
+			{
+				$matches = explode("|",str_replace(["## ","##"],"",$line));
+				if(isset($thumbnails))
+				{
+					if(!empty(substr($line,3)))
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\">".$matches[0]."</td></tr>\r\n</table></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">".$matches[0]."</td></tr>\r\n</table></div>";
 						}
 						else
 						{
-							$thumbnails = "<center>\r\n<div align=\"center\" style=\"display:inline-block;\"><center>\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
 						}
 						continue;
-					}
-				}
-
-				// Infobox
-				if(str_contains($line,"}}"))
-				{
-					$matches = explode("|",str_replace(["}} ","}}"],"",$line));
-					if(isset($infobox))
-					{
-						if(!empty(substr($line,3)))
-						{
-							if(count($matches) > 1)
-							{
-								$infobox = substr($infobox,0,-14)."<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
-							}
-							else
-							{
-								$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\">".$matches[0]."</td></tr>\r\n</table></div>";
-							}
-							continue;
-						}
-						else
-						{
-							$line = $infobox."\r\n</center>";
-							unset($infobox);
-						}
 					}
 					else
 					{
-						if(count($matches) > 1) 
+						$line = $thumbnails."\r\n</center>";
+						unset($thumbnails);
+					}
+				}
+				else
+				{
+					if(count($matches) == 1)
+					{
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">".$matches[0]."</td></tr>\r\n</table></div>";
+					}
+					else
+					{
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+					}
+					continue;
+				}
+			}
+
+			// Infobox
+			if(str_contains($line,"}}"))
+			{
+				$matches = explode("|",str_replace(["}} ","}}"],"",$line));
+				if(isset($infobox))
+				{
+					if(!empty(substr($line,3)))
+					{
+						if(count($matches) > 1)
 						{
-							$infobox = "<center>\r\n<div style=\"float:right !important;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+							$infobox = substr($infobox,0,-14)."<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
 						}
 						else
 						{
-							$infobox = "<center>\r\n<div style=\"float:right !important;\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\">".$matches[0]."</td></tr>\r\n</table></div>";
+							$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\" width=\"300px\">".$matches[0]."</td></tr>\r\n</table></div>";
 						}
 						continue;
 					}
+					else
+					{
+						$line = $infobox."\r\n</center>";
+						unset($infobox);
+					}
 				}
-
-				// Increment.ation
-				$prevline = $line;
-				$markup .= $line."\r\n";
+				else
+				{
+					if(count($matches) > 1) 
+					{
+						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+					}
+					else
+					{
+						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\" width=\"300px\">".$matches[0]."</td></tr>\r\n</table></div>";
+					}
+					continue;
+				}
 			}
+
+			// Increment.ation
+			$prevline = $line;
+			$markup .= $line."\r\n";
 		}
 	}
-
-	// Show the formatted content/Afficher le contenu mis en forme
-	echo accents(substr($markup,0,-2));
 
 	// [EN] Convert accented characters to HTML entities
 	// [FR] Conversion des caractères accentués en entités HTML

@@ -1,0 +1,76 @@
+<?php
+
+	// [EN] HTML rendering script
+	// [FR] Script de rendu HTML
+	
+	// File Protection by 403 Forbidden
+	if($_SERVER['SCRIPT_NAME'] == "/render.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
+
+	// Header/Entête
+	$render = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\" prefix=\"og: https://ogp.me/ns#\">
+<head>
+	<title>".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</title>
+	<meta property=\"og:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
+	<meta name=\"twitter:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
+	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+	<meta http-equiv=\"Content-Language\" content=\"$lang\" />
+	<meta name=\"author\" content=\"Projets Signé JARB\" />
+	<meta name=\"robots\" content=\"index, follow\" />
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\" />
+	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />
+	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />
+	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
+	<meta name=\"twitter:site\" content=\"@le_jarb\" />
+	<meta name=\"twitter:creator\" content=\"@le_jarb\" />
+	<meta name=\"twitter:card\" content=\"summary_large_image\" />
+	<meta name=\"twitter:image\" content=\"http$https://$host/img/jarb_x3.gif\" />
+	<meta property=\"og:type\" content=\"website\" />
+	<meta property=\"og:url\" content=\"http$https://$host/$lang\" />
+	<meta property=\"og:site_name\" content=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
+	<meta property=\"og:image\" content=\"http$https://$host/img/jarb_x3.gif\" />
+	<meta property=\"og:locale\" content=\"".(($lang == "fr") ? "fr_FR" : "en_US")."\" />";
+
+	// Description if exists/si existe
+	$render .= (isset($header[2])) ? "
+	<meta name=\"description\" content=\"".$header[2]."\" />
+	<meta property=\"og:description\" content=\"".$header[2]."\" />
+	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
+
+	$render .= "</head>
+	<body bgcolor=\"#333333\" text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\">
+	<center>
+	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
+		<center>
+		    <font id=\"textlogo\" face=\"Arial,Helvetica,sans-serif\" size=\"6\" color=\"#FF4500\"><b>".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</b></font><br />
+		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($lang == "fr") ? "Accueil" : "Home")."</font></b></font>
+		</center>
+	</td></tr></table><br />
+	<table class=\"subtitle\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
+		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#32CD32\"><b>".$header[1]."</b></font></center>
+	</td></tr></table><br />
+	<table class=\"content\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
+		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td>";
+	
+	// Body/Corps
+	$render .= substr($markup,0,-2);
+
+	// End/Fin
+	$render .= "\r\n\t\t</td></tr></table>
+	</td></tr></table><br />
+	<table id=\"footer\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
+		<center>
+		    <font face=\"Arial,Helvetica,sans-serif\" color=\"#DAA520\"><b>Ce site est optimisé pour certains anciens navigateurs et est conforme aux normes suivantes</b></font><br /><br />
+		    <img src=\"http$https://$host/img/valid-xhtml10.gif\" border=\"0\" alt=\"xHTML 1.0 Transitional Validé\" width=\"88px\" height=\"31px\" /> <img src=\"http$https://$host/img/valid-css.gif\" border=\"0\" alt=\"CSS Validé\" width=\"88px\" height=\"31px\" />
+		</center>
+	</td></tr></table>
+	</center>
+	<script type=\"text/javascript\">var racine = \"\"; var soustitre = \"#FF4500\"; var listecadre = \"#242424\"; </script>
+	<script type=\"text/javascript\" src=\"core/script.js\"></script>
+	</body>
+</html>";
+
+	// Show/Afficher
+	echo accents($render);
+
+?>

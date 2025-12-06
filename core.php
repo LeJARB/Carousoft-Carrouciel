@@ -6,7 +6,6 @@
 	// File Protection by 403 Forbidden
 	if($_SERVER['SCRIPT_NAME'] == "/core.php") { header($_SERVER['SERVER_PROTOCOL']." 403"); exit("403 Forbidden"); }
 
-
 	// [EN] Triyng to obtain client prefered language (only EN or FR for now)
 	// [FR] Tentative d'obtention de la langue préférée de l'utilisateur (seulement FR ou EN pour l'instant)
 	if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE']))
@@ -45,9 +44,9 @@
 		}
 	}
 
-
-	// Call to/Appel à sql.php & syntax.php
+	// Call to/Appel à sql.php & syntax.php & render.php
 	require('page.php');
 	require('syntax.php');
+	require('render.php');
 
 ?>

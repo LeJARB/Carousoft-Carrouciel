@@ -19,12 +19,13 @@
 		$lines = preg_split("/((\r?\n)|(\n?\r))/", $body);
 		foreach($lines as $line)
 		{
-			// Titles/Titres
+			// Font color & size/Couleur et taille de polices
 			if(str_contains($line,"=="))
 			{
-				preg_match("/==(.*?)\|(.*?)==/s",$line,$matches);
+				preg_match("/==(.*?)\|(.*?)\|(.*?)==/s",$line,$matches);
 				$size = $matches[1];
-				$line = "<h$size>".$matches[2]."</h$size>";
+				$color = $matches[2];
+				$line = str_replace($matches[0],"<font face=\"Arial,Helvetica,sans-serif\" size=\"$size\" color=\"$color\">".$matches[3]."</font>",$line);
 			}
 
 			// Paragraph.e
@@ -40,6 +41,12 @@
 				if($line != ">>")
 				{ $line = str_replace(">>","<br />",$line); }
 				else continue;
+			}
+
+			// Horizontal row
+			if(str_contains($line,"<<")) 
+			{ 
+				$line = str_replace("<<","<hr noshade=\"noshade\" size=\"1px\"/>",$line);
 			}
 
 			// Font formatting/Mise en forme de la police
@@ -59,7 +66,7 @@
 							case "S": $matches[3][$index] = "<s>".$matches[3][$index]."</s>"; break;
 							case "E": $matches[3][$index] = "<sup>".$matches[3][$index]."</sup>"; break;
 							case "X": $matches[3][$index] = "<sub>".$matches[3][$index]."</sub>"; break;
-							default : $matches[3][$index] = "<font color=\"red\">&#039;".substr($matches[0][$index],1,-1)."&#039;</font>";
+							default : $matches[3][$index] = "&#039;".substr($matches[0][$index],1,-1)."&#039;";
 						}
 					}
 				}
@@ -122,11 +129,11 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\">\r\n<table cellpadding=\"10px\" cellspacing=\"10px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">".$matches[0]."</td></tr>\r\n</table></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 						}
 						else
 						{
-							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
 						}
 						continue;
 					}
@@ -140,11 +147,11 @@
 				{
 					if(count($matches) == 1)
 					{
-						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\">\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">".$matches[0]."</td></tr>\r\n</table></div>";
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 					}
 					else
 					{
-						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"5px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></td></tr>\r\n</table>\r\n</center></div>";
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
 					}
 					continue;
 				}
@@ -160,11 +167,11 @@
 					{
 						if(count($matches) > 1)
 						{
-							$infobox = substr($infobox,0,-14)."<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+							$infobox = substr($infobox,0,-14)."<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
 						}
 						else
 						{
-							$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\" width=\"300px\">".$matches[0]."</td></tr>\r\n</table></div>";
+							$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\" width=\"300px\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 						}
 						continue;
 					}
@@ -178,11 +185,11 @@
 				{
 					if(count($matches) > 1) 
 					{
-						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td>".$matches[0]."</td><td>".$matches[1]."</td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
 					}
 					else
 					{
-						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\" width=\"300px\">".$matches[0]."</td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\" width=\"300px\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 					}
 					continue;
 				}

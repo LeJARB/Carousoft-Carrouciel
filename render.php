@@ -65,8 +65,8 @@
 		</center>
 	</td></tr></table>
 	</center>
-	<script type=\"text/javascript\">var racine = \"\"; var soustitre = \"#FF4500\"; var listecadre = \"#242424\"; </script>
-	<script type=\"text/javascript\" src=\"core/script.js\"></script>
+	<script type=\"text/javascript\">var sitename = \"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\"; var root = \"http$https://$host/img\"; var subtitle = \"#FF4500\";</script>
+	<script type=\"text/javascript\" src=\"http$https://$host/script.js\"></script>
 	</body>
 </html>";
 

@@ -1,5 +1,7 @@
 a { text-decoration: none; transition: color 200ms; }
 .thumblist { width: 170px; }
+.thumblistmobile { width: 100%; }
+.thumblistpc { width: 310px; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }
 a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
@@ -20,4 +22,4 @@ html { margin: 0px; padding: 0px; overflow-x: hidden; overflow-y: scroll; overfl
 body { margin: 10px; padding: 0px; }
 .floating { float:right !important; margin: 0 0 10px 10px; }
 .thumblist { margin: 5px; }
-.thumblist { display: -moz-inline-stack; display: inline-block; }
+.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }

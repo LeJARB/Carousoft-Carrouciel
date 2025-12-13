@@ -38,12 +38,12 @@
 	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
 
 	$render .= "</head>
-	<body bgcolor=\"#333333\" text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\">
+	<body bgcolor=\"#242424\" text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\">
 	<center>
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
 			<table cellpadding=\"0px\" cellspacing=\"0px\"><tr><td align=\"right\">
-				<img src=\"http$https://$host/img/png/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".png\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
+				<img src=\"http$https://$host/img/gif/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".gif\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
 				<font face=\"Arial,Helvetica,sans-serif\" size=\"1\"><b><i><font color=\"white\">".(($lang == "fr") ? "Un Projet Signé JARB" : "A Signé JARB Project")."</font></i></b></font>
 			</td></tr></table>
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($lang == "fr") ? "Accueil" : "Home")."</font></b></font>
@@ -56,10 +56,10 @@
 		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td>";
 	
 	// Body/Corps
-	$render .= substr($markup,0,-2);
+	$render .= $markup;
 
 	// End/Fin
-	$render .= "\r\n\t\t</td></tr></table>
+	$render .= "\t\t</td></tr></table>
 	</td></tr></table><br />
 	<table id=\"footer\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>

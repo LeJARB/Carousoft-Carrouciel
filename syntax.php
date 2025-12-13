@@ -171,7 +171,7 @@
 						}
 						else
 						{
-							$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\" width=\"300px\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+							$infobox = substr($infobox,0,-14)."<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 						}
 						continue;
 					}
@@ -185,11 +185,13 @@
 				{
 					if(count($matches) > 1) 
 					{
-						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
+						// $infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
 					}
 					else
 					{
-						$infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"300px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\" width=\"300px\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+						// $infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 					}
 					continue;
 				}

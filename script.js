@@ -58,9 +58,8 @@ function pc(size)
 		}
 		content.setAttribute("width","700px");
 	}
-
-	// if (element("popup","id")) { var popup = element("popup","id"); }
-	// if (popup) { popup.setAttribute("class","popuppc"); } 
+	if (element("infobox","id")) { var infobox = element("infobox","id"); }
+	if (infobox) { infobox.setAttribute("class","infoboxpc"); }
 
 
 }
@@ -82,8 +81,7 @@ function mobile()
 		for (var i = 0 ; i < thumblisttab.length ; i++)
 		{ thumblisttab[i].setAttribute("width","100%"); }
 	}
-
-	// if (element("popup","id")) { var popup = element("popup","id"); }
-	// if (popup) { popup.setAttribute("class","popupmobile"); }
+	if (element("infobox","id")) { var infobox = element("infobox","id"); }
+	if (infobox) { infobox.setAttribute("class","infoboxmobile"); }
 		
 }

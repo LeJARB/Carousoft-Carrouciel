@@ -92,7 +92,7 @@
 				// Name, Width, Height, Alt
 				foreach($matches[1] as $index => $value)
 				{
-					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
+					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/gif/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
 				}
 			}
 

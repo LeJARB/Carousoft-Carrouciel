@@ -44,6 +44,27 @@ $isdillo = (str_contains($agt,"dillo") || str_contains($agt,"dillo") || $agt == 
 $istext = str_contains($agt,"lynx") || (str_contains($agt,"links") && $agt != "links") || str_contains($agt,"text");
 $iswebboy = str_contains($agt,"webboy");
 
+if ($ismicroweb)
+{
+	$couleurs["bgcolor"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
+	$couleurs["iconecadre"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
+	$couleurs["listecadre"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
+	$couleurs["popup"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
+	$couleurs["text"] = $couleurs["nom"]=="sombre"?"ffffff":"000000";
+	$couleurs["link"] = $couleurs["nom"]=="sombre"?"55ffff":"00aaaa";
+	$couleurs["textlogo"] = $couleurs["nom"]=="sombre"?"ff5555":"aa0000";
+	$couleurs["fausse"] = $couleurs["nom"]=="sombre"?"ff5555":"aa0000";
+	$couleurs["sommaire"] = $couleurs["nom"]=="sombre"?"ffff00":"aa5500";
+	$couleurs["listextesection"] = $couleurs["nom"]=="sombre"?"ffff00":"aa5500";
+	$couleurs["pied"] = $couleurs["nom"]=="sombre"?"ffff00":"aa5500";
+	$couleurs["peutetre"] = $couleurs["nom"]=="sombre"?"ffff00":"aa5500";
+	$couleurs["soustitretexte"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
+	$couleurs["iconenom"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
+	$couleurs["listenom"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
+	$couleurs["listextenom"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
+	$couleurs["disponible"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
+}
+
 print_r(array('$agt' => $agt, '$isw3c' => $isw3c, '$isminor' =>$isminor, '$ismajor' => $ismajor, 
 '$isnetscape'=>$isnetscape, '$isnetscape2'=>$isnetscape2, '$isnetscape3'=>$isnetscape3, '$isnetscape4'=>$isnetscape4, 
 '$isie'=>$isie, '$isie3'=>$isie3, '$isie4'=>$isie4, '$isie5'=>$isie5, '$isie55'=>$isie55, '$isie6'=>$isie6, '$isie7'=>$isie7, '$isie8'=>$isie8, 

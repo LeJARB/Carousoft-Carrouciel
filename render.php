@@ -42,12 +42,15 @@
 	<center>
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
-		    <font id=\"textlogo\" face=\"Arial,Helvetica,sans-serif\" size=\"6\" color=\"#FF4500\"><b>".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</b></font><br />
+			<table cellpadding=\"0px\" cellspacing=\"0px\"><tr><td align=\"right\">
+				<img src=\"http$https://$host/img/png/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".png\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
+				<font face=\"Arial,Helvetica,sans-serif\" size=\"1\"><b><i><font color=\"white\">".(($lang == "fr") ? "Un Projet Signé JARB" : "A Signé JARB Project")."</font></i></b></font>
+			</td></tr></table>
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($lang == "fr") ? "Accueil" : "Home")."</font></b></font>
 		</center>
 	</td></tr></table><br />
 	<table class=\"subtitle\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
-		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#32CD32\"><b>".$header[1]."</b></font></center>
+		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#FF4500\"><b>".$header[1]."</b></font></center>
 	</td></tr></table><br />
 	<table class=\"content\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
 		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td>";
@@ -60,12 +63,11 @@
 	</td></tr></table><br />
 	<table id=\"footer\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
-		    <font face=\"Arial,Helvetica,sans-serif\" color=\"#DAA520\"><b>Ce site est optimisé pour certains anciens navigateurs et est conforme aux normes suivantes</b></font><br /><br />
-		    <img src=\"http$https://$host/img/valid-xhtml10.gif\" border=\"0\" alt=\"xHTML 1.0 Transitional Validé\" width=\"88px\" height=\"31px\" /> <img src=\"http$https://$host/img/valid-css.gif\" border=\"0\" alt=\"CSS Validé\" width=\"88px\" height=\"31px\" />
+		    <font face=\"Arial,Helvetica,sans-serif\" color=\"#32CD32\"><b>".(($lang == "fr") ? "Ce site est optimisé pour certains anciens navigateurs et est conforme aux normes suivantes" : "This website is optimized for some older browsers and complies with the following standards")."</b></font><br /><br />
+		    <img src=\"http$https://$host/img/gif/valid-xhtml10.gif\" border=\"0\" alt=\"xHTML 1.0 Transitional Validé\" width=\"88px\" height=\"31px\" /> <img src=\"http$https://$host/img/gif/valid-css.gif\" border=\"0\" alt=\"CSS Validé\" width=\"88px\" height=\"31px\" />
 		</center>
 	</td></tr></table>
 	</center>
-	<script type=\"text/javascript\">var sitename = \"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\"; var root = \"http$https://$host/img\"; var subtitle = \"#FF4500\";</script>
 	<script type=\"text/javascript\" src=\"http$https://$host/script.js\"></script>
 	</body>
 </html>";

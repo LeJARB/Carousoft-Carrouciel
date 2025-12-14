@@ -71,9 +71,16 @@ function mobile()
 	if (element("thumblistpc","class")) { var thumblistpc = element("thumblistpc","class"); }
 	if (thumblistpc)
 	{
+		var index = 0;
 		var taille = thumblistpc.length;
 		for (var i = 0 ; i < taille ; i++)
-		{ thumblistpc[0].setAttribute("class","thumblistmobile"); }
+		{ 
+			if (navigator.userAgent.indexOf("MSIE") != "-1") { index = i; }
+			thumblistpc[index].className = "thumblistmobile"; 
+		}
+		// var taille = thumblistpc.length;
+		// for (var i = 0 ; i < taille ; i++)
+		// { thumblistpc[0].setAttribute("class","thumblistmobile"); }
 	}
 	if (element("thumblisttab","class")) { var thumblisttab = element("thumblisttab","class"); }
 	if (thumblisttab)

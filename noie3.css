@@ -1,6 +1,0 @@
-html { margin: 0px; padding: 0px; overflow-x: hidden; overflow-y: scroll; overflow: hidden scroll; }
-body { margin: 10px; padding: 0px; }
-.infoboxpc { float:right !important; margin: 0 0 10px 10px; }
-.infoboxmobile { margin: 0 0 10px 0; }
-.thumblist { margin: 5px; }
-.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }

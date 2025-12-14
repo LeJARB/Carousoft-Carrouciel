@@ -44,8 +44,7 @@
 		}
 	}
 
-	// Call to/Appel à oldnav.php & page.php & syntax.php & render.php
-	require('oldnav.php');
+	// Call to/Appel à sql.php & syntax.php & render.php
 	require('page.php');
 	require('syntax.php');
 	require('render.php');

@@ -25,7 +25,7 @@
 				preg_match("/==(.*?)\|(.*?)\|(.*?)==/s",$line,$matches);
 				$size = $matches[1];
 				$color = $matches[2];
-				$line = str_replace($matches[0],"<font face=\"Arial,Helvetica,sans-serif\" size=\"$size\" color=\"$color\">".$matches[3]."</font>",$line);
+				$line = str_replace($matches[0],($isarachne?"<table cellpadding\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"left\">":"")."<font face=\"Arial,Helvetica,sans-serif\" size=\"$size\" color=\"$color\">".$matches[3]."</font>".($isarachne?"</td></tr></table>":""),$line);
 			}
 
 			// Paragraph.e

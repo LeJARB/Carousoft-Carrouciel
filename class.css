@@ -5,22 +5,15 @@ a { text-decoration: none; transition: color 200ms; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }
 a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
-.subtitle,.content
+.subtitle,.content,.infobox,.thumbnails
 {
-	-webkit-box-shadow: 0 0 5px 2px #000000; -webkit-border-radius: 8px;
-	-moz-box-shadow: 0 0 5px 2px #000000; -moz-border-radius: 8px;
-	box-shadow: 0 0 5px 2px #000000; border-radius: 8px;
+	-webkit-box-shadow: 0 0 5px 2px lime; -webkit-border-radius: 10px;
+	-moz-box-shadow: 0 0 5px 2px lime; -moz-border-radius: 10px;
+	box-shadow: 0 0 5px 2px lime; border-radius: 10px;
 }
-.infobox,.thumbnails
+.msie45filter
 {
-	-webkit-box-shadow: 0 0 5px 3px #242424; -webkit-border-radius: 12px;
-	-moz-box-shadow: 0 0 5px 3px #242424; -moz-border-radius: 12px;
-	box-shadow: 0 0 5px 3px #242424; border-radius: 12px;
+	padding: 5px;
+	height: 0;
+	filter: Glow(color=lime,strength=5);
 }
-/*=========*/
-html { margin: 0px; padding: 0px; overflow-x: hidden; overflow-y: scroll; overflow: hidden scroll; }
-body { margin: 10px; padding: 0px; }
-.infoboxpc { float:right !important; margin: 0 0 10px 10px; }
-.infoboxmobile { margin: 0 0 10px 0; }
-.thumblist { margin: 5px; }
-.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }

@@ -19,7 +19,9 @@
 	<meta name=\"robots\" content=\"index, follow\" />
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\" />
 	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />
-	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />
+	<link href=\"http$https://$host/noie3.css\" rel=\"stylesheet\" type=\"text/css\" />
+	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />".($isie6||$isie7||$isie8?"
+	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
 	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
 	<meta name=\"twitter:creator\" content=\"@le_jarb\" />

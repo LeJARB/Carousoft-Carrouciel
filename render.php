@@ -55,7 +55,7 @@
 		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#FF4500\"><b>".$header[1]."</b></font></center>
 	</td></tr></table><br />
 	<table class=\"content\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
-		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td>";
+		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"left\">";
 	
 	// Body/Corps
 	$render .= $markup;

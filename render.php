@@ -48,7 +48,7 @@
 				<img src=\"http$https://$host/img/".(($ismajor==5)?"png":"gif")."/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".".(($ismajor==5)?"png":"gif")."\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
 				<font face=\"Arial,Helvetica,sans-serif\" size=\"1\"><b><i><font color=\"white\">".(($lang == "fr") ? "Un Projet Signé JARB" : "A Signé JARB Project")."</font></i></b></font>
 			</td></tr></table>
-		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($lang == "fr") ? "Accueil" : "Home")."</font></b></font>
+		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($url=="Accueil"||$url=="Home")?"":"<a href=\"http$https://$host/$lang/").(($lang == "fr")?"Accueil":"Home").(($url=="Accueil"||$url=="Home")?"":"\">".(($lang == "fr")?"Retour à l'accueil":"Return to homepage")).(($url=="Accueil"||$url=="Home")?"":"</a>")."</font></b></font>
 		</center>
 	</td></tr></table><br />
 	".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table class=\"subtitle\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
@@ -76,5 +76,8 @@
 
 	// Show/Afficher
 	echo accents($render);
+
+	// echo "coucou".($url=="Accueil"||$url=="Home") ? (($lang == "fr")?"Accueil":"Home") : (($lang == "fr")?"<a href=\"http$https://$host/fr/Accueil\">Retour à l'accueil</a>":"<a href=\"http$https://$host/en/Home\">Return to homepage</a>")."okthxby";
+	// echo "coucouokthxby";
 
 ?>

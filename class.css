@@ -5,7 +5,7 @@ a { text-decoration: none; transition: color 200ms; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }
 a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
-.subtitle,.content,.infobox,.thumbnails
+.subtitle,.content,.thumbnails,.infobox
 {
 	-webkit-box-shadow: 0 0 5px 2px lime; -webkit-border-radius: 10px;
 	-moz-box-shadow: 0 0 5px 2px lime; -moz-border-radius: 10px;

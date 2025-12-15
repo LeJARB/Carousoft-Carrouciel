@@ -32,7 +32,7 @@
 			if(isset($prevline) && !empty($prevline) && empty($line))
 			{
 				$markup = substr($markup,0,-strlen($prevline)-2);
-				$line = "<div align=\"justify\"><font face=\"Arial,Helvetica,sans-serif\" class=\"lineheight\" size=\"4\">".$prevline."</font></div><br />";
+				$line = "<div align=\"justify\"><font face=\"Arial,Helvetica,sans-serif\" class=\"lineheight\" size=\"4\">".$prevline."</font></div>".($isarachne?"":"<br />");
 			}
 
 			// Line break
@@ -92,7 +92,7 @@
 				// Name, Width, Height, Alt
 				foreach($matches[1] as $index => $value)
 				{
-					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/gif/$value\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
+					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5)?"png":"gif")."/$value.".(($ismajor==5)?"png":"gif")."\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
 				}
 			}
 
@@ -129,11 +129,11 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</div>";
 						}
 						else
 						{
-							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
+							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr></table>".($isie4||$isie5?"</div>":"")."\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\"><tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
 						}
 						continue;
 					}
@@ -147,11 +147,11 @@
 				{
 					if(count($matches) == 1)
 					{
-						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</div>";
 					}
 					else
 					{
-						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr>\r\n<tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
+						$thumbnails = "<center>\r\n<div align=\"center\" class=\"thumblist\"><center>\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr></table>".($isie4||$isie5?"</div>":"")."\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\"><tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></div>";
 					}
 					continue;
 				}
@@ -177,7 +177,7 @@
 					}
 					else
 					{
-						$line = $infobox."\r\n</center>";
+						$line = $infobox."".($isie4||$isie5?"</div>":"")."\r\n</center>";
 						unset($infobox);
 					}
 				}
@@ -185,13 +185,11 @@
 				{
 					if(count($matches) > 1) 
 					{
-						$infobox = "<center>\r\n<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
-						// $infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
 					}
 					else
 					{
-						$infobox = "<center>\r\n<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
-						// $infobox = "<center>\r\n<div class=\"floating\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+						$infobox = "<center>\r\n".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 					}
 					continue;
 				}

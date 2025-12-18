@@ -1,10 +1,15 @@
+html { margin: 0px; padding: 0px; overflow-x: hidden; overflow-y: scroll; overflow: hidden scroll; }
+body { margin: 10px; padding: 0px; }
 a { text-decoration: none; transition: color 200ms; }
-.thumblist { width: 170px; }
+a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
+.infoboxpc { float:right !important; margin: 0 0 10px 10px; }
+.infoboxmobile { margin: 0 0 10px 0; }
+.thumblist { margin: 5px; width: 170px; }
 .thumblistmobile { width: 100%; }
 .thumblistpc { width: 310px; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }
-a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
+.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }
 .subtitle,.content,.thumbnails,.infobox
 {
 	-webkit-box-shadow: 0 0 5px 2px lime; -webkit-border-radius: 10px;

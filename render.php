@@ -8,10 +8,10 @@
 
 	// Header/Entête
 	$render = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\" prefix=\"og: https://ogp.me/ns#\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\"".(($isw3c)?"":" prefix=\"og: https://ogp.me/ns#\"").">
 <head>
-	<title>".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</title>
-	<meta property=\"og:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
+	<title>".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</title>".(($isw3c)?"":"
+	<meta property=\"og:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />")."
 	<meta name=\"twitter:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
 	<meta http-equiv=\"Content-Language\" content=\"$lang\" />
@@ -26,17 +26,17 @@
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
 	<meta name=\"twitter:creator\" content=\"@le_jarb\" />
 	<meta name=\"twitter:card\" content=\"summary_large_image\" />
-	<meta name=\"twitter:image\" content=\"http$https://$host/img/jarb_x3.gif\" />
+	<meta name=\"twitter:image\" content=\"http$https://$host/img/jarb_x3.gif\" />".(($isw3c)?"":"
 	<meta property=\"og:type\" content=\"website\" />
 	<meta property=\"og:url\" content=\"http$https://$host/$lang\" />
 	<meta property=\"og:site_name\" content=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
 	<meta property=\"og:image\" content=\"http$https://$host/img/jarb_x3.gif\" />
-	<meta property=\"og:locale\" content=\"".(($lang == "fr") ? "fr_FR" : "en_US")."\" />";
+	<meta property=\"og:locale\" content=\"".(($lang == "fr") ? "fr_FR" : "en_US")."\" />");
 
 	// Description if exists/si existe
 	$render .= (isset($header[2])) ? "
-	<meta name=\"description\" content=\"".$header[2]."\" />
-	<meta property=\"og:description\" content=\"".$header[2]."\" />
+	<meta name=\"description\" content=\"".$header[2]."\" />".(($isw3c)?"":"
+	<meta property=\"og:description\" content=\"".$header[2]."\" />")."
 	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
 
 	$render .= "</head>

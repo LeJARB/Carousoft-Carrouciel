@@ -8,7 +8,7 @@
 
 	// Header/Entête
 	$render = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\" prefix=\"og: https://ogp.me/ns#\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\" prefix=\"og: https://ogp.me/ns#\" class=\"".($isie6||$isie7||$isie8||$isie9?"msie556789":"")."gradient\">
 <head>
 	<title>".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</title>
 	<meta property=\"og:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />
@@ -18,10 +18,11 @@
 	<meta name=\"author\" content=\"Projets Signé JARB\" />
 	<meta name=\"robots\" content=\"index, follow\" />
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\" />
-	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />
-	<link href=\"http$https://$host/noie3.css\" rel=\"stylesheet\" type=\"text/css\" />
-	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />".($isie6||$isie7||$isie8?"
-	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
+	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />".($isie3?"
+	<link href=\"http$https://$host/classforie3.css\" rel=\"stylesheet\" type=\"text/css\" />":"
+	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />").($isie6||$isie7||$isie8||$isie9?"
+	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"").($isie5||$isie55||$isie6||$isie7?"
+	<link href=\"http$https://$host/inlineie567.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
 	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
 	<meta name=\"twitter:creator\" content=\"@le_jarb\" />
@@ -40,23 +41,23 @@
 	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
 
 	$render .= "</head>
-	<body bgcolor=\"#242424\" text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\">
+	<body ".($ismajor!=5?"bgcolor=\"#242424\" ":"")."text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\"".($isie55?" class=\"msie556789gradient\"":"").">
 	<center>
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
 			<table cellpadding=\"0px\" cellspacing=\"0px\"><tr><td align=\"right\">
-				<img src=\"http$https://$host/img/".(($ismajor==5)?"png":"gif")."/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".".(($ismajor==5)?"png":"gif")."\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
+				<img src=\"http$https://$host/img/".(($ismajor==5||$isie6)?"png":"gif")."/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".".(($ismajor==5||$isie6)?"png":"gif")."\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
 				<font face=\"Arial,Helvetica,sans-serif\" size=\"1\"><b><i><font color=\"white\">".(($lang == "fr") ? "Un Projet Signé JARB" : "A Signé JARB Project")."</font></i></b></font>
 			</td></tr></table>
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($url=="Accueil"||$url=="Home")?"":"<a href=\"http$https://$host/$lang/").(($lang == "fr")?"Accueil":"Home").(($url=="Accueil"||$url=="Home")?"":"\">".(($lang == "fr")?"Retour à l'accueil":"Return to homepage")).(($url=="Accueil"||$url=="Home")?"":"</a>")."</font></b></font>
 		</center>
 	</td></tr></table><br />
-	".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table class=\"subtitle\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"subtitle".($isie55?" msie55glow":"")."\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
 		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#FF4500\"><b>".$header[1]."</b></font></center>
 	</td></tr></table>".($isie4||$isie5?"</div>":"")."<br />
-	".($isie4||$isie5?"<div class=\"msie45filter\">":"")."<table class=\"content\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"content".($isie55?" msie55glow":"")."\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
 		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"left\">";
-	
+
 	// Body/Corps
 	$render .= $markup;
 

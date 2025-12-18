@@ -1,1 +1,2 @@
+img { -pie-png-fix: true; behavior: url(/pie.php); }
 .subtitle,.content,.infobox,.thumbnails { behavior: url(/pie.php); }

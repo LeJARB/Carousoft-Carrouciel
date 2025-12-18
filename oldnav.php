@@ -29,6 +29,7 @@
 	$isie6 = ($isie && (str_contains($agt,"msie 6")));
 	$isie7 = ($isie && (str_contains($agt,"msie 7")));
 	$isie8 = ($isie && (str_contains($agt,"msie 8")));
+	$isie9 = ($isie && (str_contains($agt,"msie 9")));
 
 	$isopera = (str_contains($agt,"opera") || str_contains($agt,"opr"));
 	$isopera2 = (str_contains($agt,"opera 2") || str_contains($agt,"opera/2"));

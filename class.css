@@ -50,3 +50,5 @@ a:hover
 }
 .msie45glow
 { padding: 5px; height: 0; filter: Glow(color=lime,strength=4); }
+.msie55glow
+{ filter: progid:DXImageTransform.Microsoft.Glow(color=lime,strength=4) !important; }

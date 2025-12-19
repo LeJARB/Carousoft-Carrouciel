@@ -52,10 +52,10 @@
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($url=="Accueil"||$url=="Home")?"":"<a href=\"http$https://$host/$lang/").(($lang == "fr")?"Accueil":"Home").(($url=="Accueil"||$url=="Home")?"":"\">".(($lang == "fr")?"Retour à l'accueil":"Return to homepage")).(($url=="Accueil"||$url=="Home")?"":"</a>")."</font></b></font>
 		</center>
 	</td></tr></table><br />
-	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"subtitle\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"subtitle".($isie55?" msie55glow":"")."\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
 		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#FF4500\"><b>".$header[1]."</b></font></center>
 	</td></tr></table>".($isie4||$isie5?"</div>":"")."<br />
-	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"content\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"content".($isie55?" msie55glow":"")."\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
 		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"left\">";
 	
 	// Body/Corps

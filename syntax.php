@@ -129,7 +129,7 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails .= "\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</div>";
+							$thumbnails .= "\r\n<".($isie4?"span id=\"thumblistmobile\"":"div align=\"center\"")." class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</".($isie4?"span":"div").">";
 						}
 						else
 						{
@@ -147,7 +147,7 @@
 				{
 					if(count($matches) == 1)
 					{
-						$thumbnails = "<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n<div align=\"center\" class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\" class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</div>";
+						$thumbnails = "<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n<".($isie4?"span id=\"thumblistmobile\"":"div align=\"center\"")." class=\"thumblistmobile\">\r\n".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5?"</div>":"")."</".($isie4?"span":"div").">";
 					}
 					else
 					{

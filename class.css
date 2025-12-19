@@ -1,15 +1,33 @@
-html { margin: 0px; padding: 0px; overflow-x: hidden; overflow-y: scroll; overflow: hidden scroll; }
-body { margin: 10px; padding: 0px; }
-a { text-decoration: none; transition: color 200ms; }
-a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
-.infoboxpc { float:right !important; margin: 0 0 10px 10px; }
-.infoboxmobile { margin: 0 0 10px 0; }
-.thumblist { margin: 5px; width: 170px; }
-.thumblistmobile { width: 100%; }
-.thumblistpc { width: 200px; }
-.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }
-.lineheight { line-height: 27px; }
-.list { margin: 0 0 10px 0; }
+html 
+{ 
+	margin: 0px; 
+	padding: 0px; 
+	overflow-x: hidden; 
+	overflow-y: scroll; 
+	overflow: hidden scroll; 
+}
+body 
+{ margin: 10px; padding: 0px; }
+a 
+{ text-decoration: none; transition: color 200ms; }
+a:hover 
+{ color: #DD00DD; }
+.infoboxpc 
+{ float:right !important; margin: 0 0 10px 10px; }
+.infoboxmobile 
+{ margin: 0 0 10px 0; }
+.thumblist 
+{ margin: 5px; width: 170px; }
+.thumblistmobile 
+{ width: 100%; }
+.thumblistpc 
+{ width: 200px; }
+.thumblist,.thumblistmobile,.thumblistpc 
+{ display: -moz-inline-stack; display: inline-block; }
+.lineheight 
+{ line-height: 27px; }
+.list 
+{ margin: 0 0 10px 0; }
 .gradient
 {
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#F0F) to(#0F9)); 
@@ -26,13 +44,9 @@ a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
 }
 .subtitle,.content,.thumbnails,.infobox
 {
-	-webkit-box-shadow: 0 0 5px 2px lime; -webkit-border-radius: 10px;
-	-moz-box-shadow: 0 0 5px 2px lime; -moz-border-radius: 10px;
-	box-shadow: 0 0 5px 2px lime; border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 6px 2px lime; -webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 0px 6px 2px lime; -moz-border-radius: 10px;
+	box-shadow: 0px 0px 6px 2px lime; border-radius: 10px;
 }
 .msie45glow
-{
-	padding: 5px;
-	height: 0;
-	filter: Glow(color=lime,strength=5);
-}
+{ padding: 5px; height: 0; filter: Glow(color=lime,strength=4); }

@@ -46,7 +46,7 @@
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
 			<table cellpadding=\"0px\" cellspacing=\"0px\"><tr><td align=\"right\">
-				<img src=\"http$https://$host/img/".(($ismajor==5)?"png":"gif")."/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".".(($ismajor==5)?"png":"gif")."\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
+				<img src=\"http$https://$host/img/".(($ismajor==5||$isie6)?"png":"gif")."/".(($lang == "fr") ? "Carrouciel" : "Carousoft").".".(($ismajor==5||$isie6)?"png":"gif")."\" alt=\"".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" border=\"0\" width=\"".(($lang == "fr") ? "276" : "262")."px\" height=\"45px\" /><br />
 				<font face=\"Arial,Helvetica,sans-serif\" size=\"1\"><b><i><font color=\"white\">".(($lang == "fr") ? "Un Projet Signé JARB" : "A Signé JARB Project")."</font></i></b></font>
 			</td></tr></table>
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($url=="Accueil"||$url=="Home")?"":"<a href=\"http$https://$host/$lang/").(($lang == "fr")?"Accueil":"Home").(($url=="Accueil"||$url=="Home")?"":"\">".(($lang == "fr")?"Retour à l'accueil":"Return to homepage")).(($url=="Accueil"||$url=="Home")?"":"</a>")."</font></b></font>

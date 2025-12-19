@@ -6,7 +6,7 @@ a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
 .infoboxmobile { margin: 0 0 10px 0; }
 .thumblist { margin: 5px; width: 170px; }
 .thumblistmobile { width: 100%; }
-.thumblistpc { width: 310px; }
+.thumblistpc { width: 200px; }
 .thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }

@@ -7,16 +7,30 @@ a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
 .thumblist { margin: 5px; width: 170px; }
 .thumblistmobile { width: 100%; }
 .thumblistpc { width: 310px; }
+.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }
 .lineheight { line-height: 27px; }
 .list { margin: 0 0 10px 0; }
-.thumblist,.thumblistmobile,.thumblistpc { display: -moz-inline-stack; display: inline-block; }
+.gradient
+{
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#F0F) to(#0F9)); 
+    background: -webkit-linear-gradient(top, #f0f, #0f9); 
+    background: -moz-linear-gradient(top, #f0f, #0f9); 
+    background: -o-linear-gradient(top, #f0f, #0f9);
+    background: linear-gradient(to bottom, #f0f, #0f9);
+	background-attachment: fixed;
+}
+.msie559gradient
+{
+	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#ff00ff,endColorStr=#00ff99);
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#ff00ff,endColorStr=#00ff99)';
+}
 .subtitle,.content,.thumbnails,.infobox
 {
 	-webkit-box-shadow: 0 0 5px 2px lime; -webkit-border-radius: 10px;
 	-moz-box-shadow: 0 0 5px 2px lime; -moz-border-radius: 10px;
 	box-shadow: 0 0 5px 2px lime; border-radius: 10px;
 }
-.msie45glow
+.msie455glow
 {
 	padding: 5px;
 	height: 0;

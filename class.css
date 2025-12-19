@@ -30,7 +30,7 @@ a:hover { color: #DD00DD !important; } a:hover { color: #1E90FF; }
 	-moz-box-shadow: 0 0 5px 2px lime; -moz-border-radius: 10px;
 	box-shadow: 0 0 5px 2px lime; border-radius: 10px;
 }
-.msie455glow
+.msie45glow
 {
 	padding: 5px;
 	height: 0;

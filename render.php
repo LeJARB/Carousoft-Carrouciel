@@ -8,7 +8,7 @@
 
 	// Header/Entête
 	$render = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\"".(($isw3c)?"":" prefix=\"og: https://ogp.me/ns#\"").">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\" class=\"".($isie6||$isie7||$isie8||$isie9?"msie559":"")."gradient\"".(($isw3c)?"":" prefix=\"og: https://ogp.me/ns#\"").">
 <head>
 	<title>".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."</title>".(($isw3c)?"":"
 	<meta property=\"og:title\" content=\"".$header[0]." - ".(($lang == "fr") ? "Carrouciel" : "Carousoft")."\" />")."
@@ -20,9 +20,9 @@
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\" />
 	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />".($isie3?"
 	<link href=\"http$https://$host/classforie3.css\" rel=\"stylesheet\" type=\"text/css\" />":"
-	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />").($isie6||$isie7||$isie8?"
+	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />").($isie6||$isie7||$isie8||$isie9?"
 	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"").(($isie5||$isie55||$isie6||$isie7)?"
-	<link href=\"http$https://$host/inline.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
+	<link href=\"http$https://$host/inlineie567.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
 	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
 	<meta name=\"twitter:creator\" content=\"@le_jarb\" />
@@ -41,7 +41,7 @@
 	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
 
 	$render .= "</head>
-	<body bgcolor=\"#242424\" text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\">
+	<body ".($ismajor!=5?"bgcolor=\"#242424\" ":"")."text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\"".($isie55?" class=\"msie559gradient\"":"").">
 	<center>
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
@@ -77,8 +77,5 @@
 
 	// Show/Afficher
 	echo accents($render);
-
-	// echo "coucou".($url=="Accueil"||$url=="Home") ? (($lang == "fr")?"Accueil":"Home") : (($lang == "fr")?"<a href=\"http$https://$host/fr/Accueil\">Retour à l'accueil</a>":"<a href=\"http$https://$host/en/Home\">Return to homepage</a>")."okthxby";
-	// echo "coucouokthxby";
 
 ?>

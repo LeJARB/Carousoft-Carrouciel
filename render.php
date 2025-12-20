@@ -22,7 +22,7 @@
 	<link href=\"http$https://$host/classforie3.css\" rel=\"stylesheet\" type=\"text/css\" />":"
 	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />").($isie6||$isie7||$isie8||$isie9?"
 	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"").(($isie5||$isie5_5||$isie6||$isie7)?"
-	<link href=\"http$https://$host/inlineie567.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
+	<!-- <link href=\"http$https://$host/inlineie567.css\" rel=\"stylesheet\" type=\"text/css\" /> -->":"")."
 	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
 	<meta name=\"twitter:creator\" content=\"@le_jarb\" />

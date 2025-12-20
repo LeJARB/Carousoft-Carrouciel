@@ -60,8 +60,10 @@ function pc(size)
 	}
 	if (element("infobox","id")) { var infobox = element("infobox","id"); }
 	if (infobox) { infobox.setAttribute("class","infoboxpc"); }
-
-
+	if (element("floatie4","id")) { var floatie4 = element("floatie4","id"); }
+	if (floatie4) 
+	{ floatie4.style.cssText = "float: right; width: 280px;"; }
+	
 }
 
 function mobile()
@@ -83,5 +85,8 @@ function mobile()
 	}
 	if (element("infobox","id")) { var infobox = element("infobox","id"); }
 	if (infobox) { infobox.setAttribute("class","infoboxmobile"); }
-		
+	if (element("floatie4","id")) { var floatie4 = element("floatie4","id"); }
+	if (floatie4) 
+	{ floatie4.style.cssText = ""; }
+	
 }

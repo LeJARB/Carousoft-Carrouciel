@@ -60,9 +60,9 @@ function pc(size)
 	}
 	if (element("infobox","id")) { var infobox = element("infobox","id"); }
 	if (infobox) { infobox.setAttribute("class","infoboxpc"); }
-	if (element("floatie4","id")) { var floatie4 = element("floatie4","id"); }
-	if (floatie4) 
-	{ floatie4.style.cssText = "float: right; width: 280px;"; }
+	if (element("floatmsie45","id")) { var floatmsie45 = element("floatmsie45","id"); }
+	if (floatmsie45) 
+	{ floatmsie45.style.cssText = "float: right; width: 280px;"; }
 	
 }
 
@@ -85,8 +85,8 @@ function mobile()
 	}
 	if (element("infobox","id")) { var infobox = element("infobox","id"); }
 	if (infobox) { infobox.setAttribute("class","infoboxmobile"); }
-	if (element("floatie4","id")) { var floatie4 = element("floatie4","id"); }
-	if (floatie4) 
-	{ floatie4.style.cssText = ""; }
+	if (element("floatmsie45","id")) { var floatmsie45 = element("floatmsie45","id"); }
+	if (floatmsie45) 
+	{ floatmsie45.style.cssText = ""; }
 	
 }

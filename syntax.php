@@ -177,7 +177,7 @@
 					}
 					else
 					{
-						$line = $infobox."".($isie4||$isie5||$isie5_5?"</div>":"")."\r\n</center>".($isie4||$isie5||$isie5_5?"</span>":"");
+						$line = $infobox."".($isie4||$isie5||$isie5_5?"</div>":"")."\r\n</center>".($isie4||$isie5||$isie5_5||$isie6?"</span>":"");
 						unset($infobox);
 					}
 				}
@@ -185,11 +185,11 @@
 				{
 					if(count($matches) > 1) 
 					{
-						$infobox = "".($isie4||$isie5||$isie5_5?"<span style=\"\" id=\"floatmsie45\">":"")."<center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
+						$infobox = "".($isie4||$isie5||$isie5_5||$isie6?"<span style=\"\" id=\"floatmsie45\">":"")."<center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[1]."</font></td></tr>\r\n</table></div>";
 					}
 					else
 					{
-						$infobox = "".($isie4||$isie5||$isie5_5?"<span style=\"\" id=\"floatmsie45\">":"")."<center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
+						$infobox = "".($isie4||$isie5||$isie5_5||$isie6?"<span style=\"\" id=\"floatmsie45\">":"")."<center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<div class=\"infoboxmobile\" id=\"infobox\">\r\n<table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\">\r\n<tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table></div>";
 					}
 					continue;
 				}

@@ -21,11 +21,23 @@
 	$isnetscape3 = ($isnetscape && ($ismajor == 3));
 	$isnetscape4 = ($isnetscape && ($ismajor == 4));
 
+	$isgecko = str_contains($agt,"gecko") && !str_contains($agt,"like");
+	$isphoenix = str_contains($agt,"phoenix");
+	$isfirebird = str_contains($agt,"firebird");
+	$isfirefox = str_contains($agt,"firefox");
+	$isfirefox0 = $isphoenix || $isfirebird || ($isfirefox && (str_contains($agt,"firefox/0.")));
+	$isfirefox1 = ($isfirefox && (str_contains($agt,"firefox/1.0")));
+	$isfirefox1_5 = ($isfirefox && (str_contains($agt,"firefox/1.5")));
+	$isfirefox2 = ($isfirefox && (str_contains($agt,"firefox/2.0")));
+	$isfirefox3 = ($isfirefox && (str_contains($agt,"firefox/3.0")));
+	$isfirefox3_5 = ($isfirefox && (str_contains($agt,"firefox/3.5")));
+	$isfirefox3_6 = ($isfirefox && (str_contains($agt,"firefox/3.6")));
+
 	$isie = ((str_contains($agt,"msie")) && !(str_contains($agt,"opera")));
 	$isie3 = ($isie && ($ismajor < 4)) && !$isw3c;
 	$isie4 = ($isie && (str_contains($agt,"msie 4")));
 	$isie5 = ($isie && (str_contains($agt,"msie 5.0")));
-	$isie55 = ($isie && (str_contains($agt,"msie 5.5")));
+	$isie5_5 = ($isie && (str_contains($agt,"msie 5.5")));
 	$isie6 = ($isie && (str_contains($agt,"msie 6")));
 	$isie7 = ($isie && (str_contains($agt,"msie 7")));
 	$isie8 = ($isie && (str_contains($agt,"msie 8")));

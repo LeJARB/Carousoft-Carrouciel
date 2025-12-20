@@ -21,7 +21,7 @@
 	<link rel=\"icon\" type=\"image/x-icon\" href=\"http$https://$host/img/favicon.ico\" />".($isie3?"
 	<link href=\"http$https://$host/classforie3.css\" rel=\"stylesheet\" type=\"text/css\" />":"
 	<link href=\"http$https://$host/class.css\" rel=\"stylesheet\" type=\"text/css\" />").($isie6||$isie7||$isie8||$isie9?"
-	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"").(($isie5||$isie55||$isie6||$isie7)?"
+	<link href=\"http$https://$host/behavior.css\" rel=\"stylesheet\" type=\"text/css\" />":"").(($isie5||$isie5_5||$isie6||$isie7)?"
 	<link href=\"http$https://$host/inlineie567.css\" rel=\"stylesheet\" type=\"text/css\" />":"")."
 	<!--<meta name=\"theme-color\" content=\"#242424\" />-->
 	<meta name=\"twitter:site\" content=\"@le_jarb\" />
@@ -41,7 +41,7 @@
 	<meta name=\"twitter:description\" content=\"".$header[2]."\" />\r\n" : "";
 
 	$render .= "</head>
-	<body ".($ismajor!=5?"bgcolor=\"#242424\" ":"")."text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\"".($isie55?" class=\"msie559gradient\"":"").">
+	<body ".($ismajor==5&&!$isfirefox0&&!$isfirefox1&&!$isfirefox1_5&&!$isfirefox2&&!$isfirefox3&&!$isfirefox3_5?"":"bgcolor=\"#242424\" ")."text=\"#DADADA\" link=\"#1E90FF\" vlink=\"#1E90FF\"".($isie5_5?" class=\"msie559gradient\"":"").">
 	<center>
 	<table id=\"header\" cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">
 		<center>
@@ -52,10 +52,10 @@
 		    <font face=\"Arial,Helvetica,sans-serif\"><b><font color=\"#DAA520\">".(($url=="Accueil"||$url=="Home")?"":"<a href=\"http$https://$host/$lang/").(($lang == "fr")?"Accueil":"Home").(($url=="Accueil"||$url=="Home")?"":"\">".(($lang == "fr")?"Retour à l'accueil":"Return to homepage")).(($url=="Accueil"||$url=="Home")?"":"</a>")."</font></b></font>
 		</center>
 	</td></tr></table><br />
-	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"subtitle".($isie55?" msie55glow":"")."\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"subtitle".($isie5_5?" msie55glow":"")."\" cellpadding=\"10px\" cellspacing=\"0px\" bgcolor=\"#000000\"><tr><td align=\"center\">
 		<center><font face=\"Arial,Helvetica,sans-serif\" size=\"5\" color=\"#FF4500\"><b>".$header[1]."</b></font></center>
 	</td></tr></table>".($isie4||$isie5?"</div>":"")."<br />
-	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"content".($isie55?" msie55glow":"")."\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
+	".($isie4||$isie5?"<div class=\"msie45glow\">":"")."<table class=\"content".($isie5_5?" msie55glow":"")."\" id=\"content\" cellpadding=\"0px\" cellspacing=\"0px\" bgcolor=\"#000000\" width=\"100%\"><tr><td>
 		<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"left\">";
 	
 	// Body/Corps

@@ -32,7 +32,7 @@
 			if(isset($prevline) && !empty($prevline) && empty($line))
 			{
 				$markup = substr($markup,0,-strlen($prevline)-2);
-				$line = "<div align=\"justify\"><font face=\"Arial,Helvetica,sans-serif\" class=\"lineheight\" size=\"4\">".$prevline."</font></div>".($isarachne?"":"<br />");
+				$line = "<div align=\"justify\"><font face=\"Arial,Helvetica,sans-serif\" class=\"lineheight\" size=\"4\" color=\"#DADADA\">".$prevline."</font></div>".($isarachne?"":"<br />");
 			}
 
 			// Line break
@@ -79,6 +79,7 @@
 				preg_match_all("/\[\[(.*?)\|(.*?)\]\]/s",$line,$matches);
 				foreach($matches[1] as $index => $value)
 				{
+					if($ismdx) $value = str_replace("."," ",$value);
 					$matches[3][$index] = "<a href=\"http$https://$host/$lang/$value\">".$matches[2][$index]."</a>";
 					if(str_contains($value,"://")) $matches[3][$index] = "<a href=\"$value\">".$matches[2][$index]."</a>";
 				}
@@ -93,6 +94,34 @@
 				foreach($matches[1] as $index => $value)
 				{
 					$line = str_replace($matches[0][$index],"<img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6)?"png":"gif")."/$value.".(($ismajor==5||$isie6)?"png":"gif")."\" width=\"".$matches[2][$index]."\" height=\"".$matches[3][$index]."\" alt=\"".$matches[4][$index]."\" />",$line);
+				}
+			}
+
+			// [EN] Simple formatting for List and Builds types (a specific infobox)
+			// [FR] Formattage simple pour les listes et les Catégories de déversions (un infobox spécifique)
+			if(str_contains($line,"{{"))
+			{
+				preg_match("/{{(.*?)}}/s",$line,$matches);
+				if (!empty($matches[1]))
+				{
+					preg_match("/{{(.*?)\|(.*?)}}/s",$line,$matches);
+					$buildtype = $matches[1];
+					$buildname = $matches[2];
+					$buildimage = "";
+					$buildimgalt = "";
+					$buildcolor = ""; 
+					switch($buildtype)
+					{
+						case "A": $buildimage = "available"; $buildimgalt = ($lang=="fr"?"Disponible":"Available"); $buildcolor = "#32CD32"; break;
+						case "C": $buildimage = "confirmed"; $buildimgalt = ($lang=="fr"?"Confirmée":"Confirmed"); $buildcolor = "#1E90FF"; break;
+						case "M": $buildimage = "mayexist"; $buildimgalt = ($lang=="fr"?"À vérifier":"May exist"); $buildcolor = "#DAA520"; break;
+						case "F": $buildimage = "fake"; $buildimgalt = ($lang=="fr"?"Fausse":"Fake"); $buildcolor = "#FF4500"; break;
+					}
+					$line = "** <img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."/$buildimage".($isdillo||$ismdx?"_14px":"").".".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."\" width=\"14px\" height=\"14px\" alt=\"$buildimgalt\" />&nbsp;<font face=\"Arial,Helvetica,sans-serif\" size=\"4\" color=\"$buildcolor\"><b>$buildname</b></font>";
+				}
+				else
+				{
+					$line = "<center><div class=\"infoboxmobile\" id=\"infobox\"><table class=\"infobox\" cellpadding=\"5px\" cellspacing=\"0px\" width=\"280px\" bgcolor=\"#242424\"><tr><td align=\"center\" colspan=\"2\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><u>".($lang=="fr"?"Catégories des déversions :":"Builds types :")."</u><hr noshade=\"noshade\" size=\"1px\"/></font></td></tr><tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."/available".($isdillo||$ismdx?"_24px":"").".".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."\" width=\"24px\" height=\"24px\" alt=\"".($lang=="fr"?"Disponible":"Available")."\" /></font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".($lang=="fr"?"Cette déversion est librement disponible sur Internet":"This build is available for download on the Internet")."</font></td></tr><tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."/confirmed".($isdillo||$ismdx?"_24px":"").".".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."\" width=\"24px\" height=\"24px\" alt=\"".($lang=="fr"?"Confirmée":"Confirmed")."\" /></font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".($lang=="fr"?"Cette déversion existe, mais n'a jamais été divulguée":"This build officially exists but hasn't been disclosed")."</font></td></tr><tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."/mayexist".($isdillo||$ismdx?"_24px":"").".".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."\" width=\"24px\" height=\"24px\" alt=\"".($lang=="fr"?"À vérifier":"May exist")."\" /></font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".($lang=="fr"?"Cette déversion existe peut-être, mais sans certitudes":"This build might exist but there's no certainty")."</font></td></tr><tr><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><img border=\"0\" src=\"http$https://$host/img/".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."/fake".($isdillo||$ismdx?"_24px":"").".".(($ismajor==5||$isie6||$isdillo||$ismdx)?"png":"gif")."\" width=\"24px\" height=\"24px\" alt=\"".($lang=="fr"?"Fausse":"Fake")."\" /></font></td><td><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".($lang=="fr"?"Cette déversion a été conçue ou modifiée par un tiers":"This build is a model created by a third party.")."</font></td></tr></table></div></center>";
 				}
 			}
 

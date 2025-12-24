@@ -62,7 +62,7 @@
 	$iswebboy = str_contains($agt,"webboy");
 	$ismdx = str_contains($agt,"mdx");
 
-	if ($ismicroweb)
+	/* if ($ismicroweb)
 	{
 		$couleurs["bgcolor"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
 		$couleurs["iconecadre"] = $couleurs["nom"]=="sombre"?"555555":"aaaaaa";
@@ -81,6 +81,6 @@
 		$couleurs["listenom"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
 		$couleurs["listextenom"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
 		$couleurs["disponible"] = $couleurs["nom"]=="sombre"?"55ff55":"00aa00";
-	}
+	} */
 
 ?>

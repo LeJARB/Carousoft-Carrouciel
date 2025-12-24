@@ -9,7 +9,7 @@ html
 body 
 { margin: 10px; padding: 0px; }
 a 
-{ text-decoration: none; transition: color 200ms; }
+{ text-decoration: none; -webkit-transition: color 200ms; -moz-transition: color 200ms; -o-transition: color 200ms; transition: color 200ms; }
 a:hover 
 { color: #DD00DD; }
 .infoboxpc 
@@ -30,6 +30,7 @@ a:hover
 { margin: 0 0 10px 0; }
 .gradient
 {
+	background: #242424;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#F0F) to(#0F9)); 
     background: -webkit-linear-gradient(top, #f0f, #0f9); 
     background: -moz-linear-gradient(top, #f0f, #0f9); 

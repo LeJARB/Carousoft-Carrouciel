@@ -158,7 +158,7 @@
 					{
 						if(count($matches) == 1)
 						{
-							$thumbnails .= "\r\n<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\"":"div align=\"center\"")." ".($isphoenix?"":"class=\"thumblistmobile\"").">\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5||$isie5_5?"</div>":"")."</".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
+							$thumbnails .= "\r\n<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\"":"div align=\"center\"")." ".($isphoenix?"":"class=\"thumblistmobile\"").">\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"").($ismdx?"":"<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">")."<font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font>".($ismdx?"":"</td></tr>\r\n</table>").($isie4||$isie5||$isie5_5?"</div>":"")."</".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
 						}
 						else
 						{
@@ -168,7 +168,7 @@
 					}
 					else
 					{
-						$line = $thumbnails."\r\n</td></tr></table></center>";
+						$line = $thumbnails.($ismdx?"":"\r\n</td></tr></table></center>");
 						unset($thumbnails);
 					}
 				}
@@ -176,11 +176,11 @@
 				{
 					if(count($matches) == 1)
 					{
-						$thumbnails = "<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\"":"div align=\"center\"")." ".($isphoenix?"":"class=\"thumblistmobile\"").">\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font></td></tr>\r\n</table>".($isie4||$isie5||$isie5_5?"</div>":"")."</".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
+						$thumbnails = ($ismdx?"":"<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n")."<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\"":"div align=\"center\"")." ".($isphoenix?"":"class=\"thumblistmobile\"").">\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"").($ismdx?"":"<table cellpadding=\"20px\" cellspacing=\"10px\" width=\"100%\"".($isie?" id=\"thumblisttab\"":"")." class=\"thumblisttab\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\">")."<font face=\"Arial,Helvetica,sans-serif\" size=\"4\">".$matches[0]."</font>".($ismdx?"":"</td></tr>\r\n</table>").($isie4||$isie5||$isie5_5?"</div>":"")."</".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
 					}
 					else
 					{
-						$thumbnails = "<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\" style=\"width: 200px !important\"":"div align=\"center\"")." class=\"thumblist\"><center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr></table>".($isie4||$isie5||$isie5_5?"</div>":"")."\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\"><tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
+						$thumbnails = ($ismdx?"":"<center><table cellpadding=\"0px\" cellspacing=\"0px\" width=\"100%\"><tr><td align=\"center\">\r\n")."<".($isie4||$isie5||$isie5_5||$isie6?"span id=\"thumblistmobile\" style=\"width: 200px !important\"":"div align=\"center\"")." class=\"thumblist\"><center>\r\n".($isie4||$isie5||$isie5_5?"<div class=\"msie45glow\">":"")."<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\">\r\n<tr><td align=\"center\" bgcolor=\"#242424\" class=\"thumbnails\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[2]."</a></td></tr></table>".($isie4||$isie5||$isie5_5?"</div>":"")."\r\n<table cellpadding=\"10px\" cellspacing=\"0px\" width=\"120px\"><tr><td align=\"center\"><font face=\"Arial,Helvetica,sans-serif\" size=\"4\"><a href=\"http$https://$host/$lang/".$matches[1]."\">".$matches[0]."</a></font></td></tr>\r\n</table>\r\n</center></".($isie4||$isie5||$isie5_5||$isie6?"span":"div").">";
 					}
 					continue;
 				}
